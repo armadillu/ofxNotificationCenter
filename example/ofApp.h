@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxInterface.h"
+#include "ofxNotificationCenter.h"
 
 /// See "ofxNotificationCenter.h" for an explanation on how ofxNotificationCenter works
 
@@ -48,9 +49,9 @@ public:
 		ofLogNotice("MyNode") << "onDeviceConnectedNotif()";
 		deviceAvailable = true;
 
-		//obtain your notification data by downcasting
+		//obtain your notification data by dynamic casting
 		try{
-			MyNotificationData & n2 = static_cast<MyNotificationData&>(n);
+			MyNotificationData & n2 = dynamic_cast<MyNotificationData&>(n);
 			ofLogNotice() << n2.myInfo << " " << n2.myValue;
 		}catch(const std::bad_cast& e){
 			ofLogError() << "type conversion error!";
@@ -61,9 +62,9 @@ public:
 		ofLogNotice("MyNode") << "onDeviceDisconnectedNotif()";
 		deviceAvailable = false;
 
-		//obtain your notification data by downcasting
+		//obtain your notification data by dynamic casting
 		try{
-			MyNotificationData & n2 = static_cast<MyNotificationData&>(n);
+			MyNotificationData & n2 = dynamic_cast<MyNotificationData&>(n);
 			ofLogNotice() << n2.myInfo << " " << n2.myValue;
 		}catch(const std::bad_cast& e){
 			ofLogError() << "type conversion error!";

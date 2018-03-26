@@ -35,7 +35,7 @@
  Developers who want to send extra data inside their notifications should make their own Notifications 
  by subclassing
  
- 	struct MyNotification : publicofxNotificationCenter::Notification{
+ 	struct MyNotification : public ofxNotificationCenter::Notification{
  		//your stuff here
  	};
 

@@ -63,6 +63,7 @@ public:
 		deviceAvailable = false;
 
 		//obtain your notification data by dynamic casting
+		//Note that this will fail, as we didn't supply any data when we posted the notification.
 		try{
 			MyNotificationData & n2 = dynamic_cast<MyNotificationData&>(n);
 			ofLogNotice() << n2.myInfo << " " << n2.myValue;

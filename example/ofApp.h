@@ -62,7 +62,7 @@ public:
 		ofLogNotice("MyNode") << "onDeviceDisconnectedNotif()";
 		deviceAvailable = false;
 
-		//obtain your notification data by dynamic casting
+		//obtain your notification data by dynamic casting presuming a certain type
 		//Note that this will fail, as we didn't supply any data when we posted the notification.
 		try{
 			MyNotificationData & n2 = dynamic_cast<MyNotificationData&>(n);
@@ -70,6 +70,10 @@ public:
 		}catch(const std::bad_cast& e){
 			ofLogError() << "type conversion error!";
 		}
+
+		//obtain data in the base class notification data
+		string myOtherThing = n.data["myOhterThing"];
+		ofLogNotice() << "myOtherThing: " << myOtherThing;
 	}
 
 	bool deviceAvailable = false;

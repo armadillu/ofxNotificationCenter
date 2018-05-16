@@ -98,6 +98,7 @@ public:
 
 	struct Notification{ //you may want to subclass this to attach custom content to your notifications...
 		string ID;
+		ofJson data; //support random data embedding (basic types only)
 		virtual ~Notification(){}; //make Notification a polymorphic object
 	};
 

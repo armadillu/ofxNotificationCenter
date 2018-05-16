@@ -75,8 +75,12 @@ void ofApp::disconnectDevice(){
 
 	ofLogNotice("ofApp") << "## Device Disconnected! ###################################################";
 
+	ofxNotificationCenter::Notification notifData;
+	notifData.data["myThing"] = 1;
+	notifData.data["myOhterThing"] = "banana";
+
 	//post a notification of type "deviceConnectedNotification", with no data attached.
-	ofxNotificationCenter::one().postNotification("deviceDisconnectedNotification");
+	ofxNotificationCenter::one().postNotification("deviceDisconnectedNotification", notifData);
 }
 
 

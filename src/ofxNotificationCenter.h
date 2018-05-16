@@ -26,13 +26,14 @@
  1 - the Notification Poster : someone who posts a notification on a certain channel
  2 - a Notification Observer: someone who is listenting for notifications in a certain channel
 
- Notifications include an ID:
+ Notifications include an ID and an ofJson onbject for basic data:
 
  	struct Notification{
 		string ID;
+ 		ofJson data;
 	};
 
- Developers who want to send extra data inside their notifications should make their own Notifications 
+ Developers who want to send extra custom-type data inside their notifications should make their own Notifications
  by subclassing
  
  	struct MyNotification : public ofxNotificationCenter::Notification{
@@ -51,8 +52,7 @@
  1 - Define a custom Data Structure to attach in your notifications
  
  	 struct MyNotificationData {
-		string myInfo;
-		float myValue;
+ 		MyObjectType * myObject;
 	 };
 
  2 - Make all the observers "tune in" for notfications of your desired ID ("MyNotificationType")
@@ -145,9 +145,10 @@ public:
 		auto it = eventsByID.find(notificationID);
 		if(it != eventsByID.end()){
 			notif.ID = notificationID;
+			//ofLogNotice("ofxNotificationCenter") << "posting notification with ID \"" << notificationID << "\"";
 			ofNotifyEvent(it->second, notif, this);
 		}else{
-			ofLogError("ofxNotificationCenter") << " can't post notification with ID \"" << notificationID << "\" because nobody is listening!";
+			ofLogError("ofxNotificationCenter") << "can't post notification with ID \"" << notificationID << "\" because nobody is listening!";
 		}
 	};
 

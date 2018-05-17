@@ -8,7 +8,7 @@ To receive notifications, one must first register itself to do so.
 There are different notification "channels" - one can "post to" and/or "subscribe for" to a certain
 channel/type of notifications. Notifications are distinguished by an ID(std::string) the developer supplies.
 
-This is pretty much a copy of NSNotification found in the Cocoa interfaces.
+This is pretty much a copy of [NSNotification](https://developer.apple.com/documentation/foundation/nsnotificationcenter) found in the Cocoa interfaces.
 
 For a Notification to happen, we need at least 2 entities:
 
@@ -39,7 +39,7 @@ ofApp owns the pointer to the device, and it's the only component that gets the 
 We need that event to be forwarded to several components of our app that are buried under several levels of
 encapsulation.
 
-The workflow to solve this problem with ofxNotificationCenter would be:
+The workflow to solve this problem with [ofxNotificationCenter](https://github.com/armadillu/ofxNotificationCenter) would be:
 
 1. **(Optional)** Define a custom data structure (subclassing `ofxNotificationCenter::Notification`) to be able attach your custom data into your notifications:
 

@@ -24,7 +24,7 @@ struct Notification{
 };
 ```
 
-Developers who want to send extra custom-type data inside their notifications should make their own Notifications by subclassing
+Developers who want to send extra custom-type data inside their notifications should make their own Notifications by subclassing `ofxNotificationCenter::Notification`:
 
 ```c++
 struct MyNotification : public ofxNotificationCenter::Notification{

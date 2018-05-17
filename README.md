@@ -65,18 +65,18 @@ The workflow to solve this problem with [ofxNotificationCenter](https://github.c
 	mnd.data["myCustomField"] = "MyCustomData"; //add as many generic data types as you need
 	mnd.data["myFloatVector"] = (vector<float>){0.2, 0.5, 0.6}; //some standard std structures also supported
 	
-	//Post the notification	
+	//Post the notification – note how you are not addressing it to anyone in particular.
 	ofxNotificationCenter::one().postNotification("MyNotificationType", mnd);
 	```
 	
 	If you need to use custom data types, your notification object should be of your custom data type (Requires step 1).
 	
 	```c++
-	MyNotificationData myCustomNotificationData;
-	myCustomNotificationData.myObject = mySpecialObjectPtr; 
+	MyNotificationData myCustomNotificationData; //create notification object with our custom data type
+	myCustomNotificationData.myObject = mySpecialObjectPtr; //add our custom type data in
 		
-		//Post the notification	
-	ofxNotificationCenter::one().postNotification("MyNotificationType", mnd);
+	//Post the notification on the "MyNotificationType" channel with our data
+	ofxNotificationCenter::one().postNotification("MyNotificationType", myCustomNotificationData);
 	```
 
 4. Implement a notification callback for the observers to receive notifications:
@@ -84,9 +84,9 @@ The workflow to solve this problem with [ofxNotificationCenter](https://github.c
 	```c++	 
 	void MyClass::onMyNotification(ofxNotificationCenter::Notification & n){
 
-		string notificationID = n.ID; 
-		string myField = n.data["myCustomField"]; //get what you need from the data field in the Notification
-		vector<float> myVector = n.data["myFloatVector"];
+		string notificationID = n.ID; //the notification ID is available to you
+		string myField = n.data["myCustomField"]; //get what you need from the data field
+		vector<float> myVector = n.data["myFloatVector"]; 
 		
 		//if you require custom data types and your notification poster sent a custom type
 		//like `MyNotificationData`, obtain your custom notification data by dynamic casting

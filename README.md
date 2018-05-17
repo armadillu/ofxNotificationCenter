@@ -8,7 +8,7 @@ To receive notifications, one must first register itself to do so.
 There are different notification "channels" - one can "post to" and/or "subscribe for" to a certain
 channel/type of notifications. Notifications are distinguished by an ID(std::string) the developer supplies.
 
-This is pretty much a copy of [NSNotification](https://developer.apple.com/documentation/foundation/nsnotificationcenter) found in the Cocoa interfaces.
+This is pretty much a copy of [NSNotificationCenter](https://developer.apple.com/documentation/foundation/nsnotificationcenter) found in the Cocoa interfaces.
 
 For a Notification to happen, we need at least 2 entities:
 

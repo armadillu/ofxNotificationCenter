@@ -103,6 +103,6 @@ The workflow to solve this problem with [ofxNotificationCenter](https://github.c
 5. When an Observer does not want to listen to more notifications (or before it is delete) it must remove
  itself from the observer list. This is step is very important, otherwise the application will *crash*.
  
- ```c++
- ofxNotificationCenter::one().removeObserver(this, &MyClass::onMyNotification, "MyNotificationType");
- ```
+	```c++
+	ofxNotificationCenter::one().removeObserver(this, &MyClass::onMyNotification, "MyNotificationType");
+	```

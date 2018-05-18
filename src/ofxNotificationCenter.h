@@ -20,10 +20,21 @@ public:
 
 	////////////////////////////////////////////////////////////////////////////////////////////////
 
-	struct Notification{ //you may want to subclass this to attach custom content to your notifications...
+	//this is the data that's attached to every notification
+	//it supports basic types through ofJson
+	//you should subclass this to attach custom types to your notifications
+	struct Notification{
+
 		string ID;
 		ofJson data; //support random data embedding (basic types only)
+
 		virtual ~Notification(){}; //make Notification a polymorphic object
+		Notification(){};
+
+		template<typename T>
+		Notification(const string &key, const T & value){ //constructor shortcut with key-value combo
+			data[key] = value;
+		}
 	};
 
 	////////////////////////////////////////////////////////////////////////////////////////////////

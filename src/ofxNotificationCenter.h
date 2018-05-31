@@ -27,6 +27,7 @@ public:
 
 		string ID;
 		ofJson data; //support random data embedding (basic types only)
+		void * userData = nullptr;
 
 		virtual ~Notification(){}; //make Notification a polymorphic object
 		Notification(){};

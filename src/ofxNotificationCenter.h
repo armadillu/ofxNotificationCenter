@@ -48,7 +48,7 @@ public:
 
 		auto it = eventsByID.find(notificationID);
 		if(it == eventsByID.end()){
-			eventsByID[notificationID] = ofEvent<Notification>();
+			eventsByID[notificationID] = std::move(ofEvent<Notification>());
 		}
 
 		auto & event = eventsByID[notificationID];
